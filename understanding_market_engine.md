@@ -20,13 +20,21 @@ In bitshares the term smartcoin generally refers to specific MPAs that are owned
 
 ## Feeds
 
+## Settelement price
+
+Also known as feed price. 
+
 ## Collateral
 
 ## Collateral Ratio
 
 ## MCR
 
-maintenance_collateral_ratio
+maintenance_collateral_ratio - Fed by the witneses
+
+## MSSR
+
+maximum_short_squeeze_ratio - Fed by the witness
 
 ## MSSP
 
@@ -34,13 +42,13 @@ maintenance_collateral_ratio
 
 ## Discount
 
-## Settelement price
-
 ## Call Order
 
 ## Limit Order
 
 ## Margin Call
+
+- Feed price is below order call price.
 
 ## margin call territory
 
