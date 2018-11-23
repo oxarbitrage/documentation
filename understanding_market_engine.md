@@ -20,6 +20,10 @@ Also know as witness or commitee fed assets.
 
 ## mssp
 
+## Premium
+
+## Discount
+
 ## Settelement price
 
 ## Call Order
