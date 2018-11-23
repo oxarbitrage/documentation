@@ -1,12 +1,16 @@
 # Understanding the Bitshares Market Engine
 
-## User Issued assets
+## User Issued Assets
 
-## Market pegged assets
+Bitshares is a token/asset factory. Once an account is created the user can inmediatly create and issue asset. Once an asset is created it can inmediatly trade with all the other assets in the bitshares blockchain unless specific whitelist/blacklist rules are configured. User Issued Assets(UIAs) trading price ...
+
+## Market Pegged Assets
+
+Users of the bitshares blockchain can also create Market Pegged Assets(MPAs) that can follow the value of a conventional asset like the USD or the SP500 . In this kind of asset the creator will whitelist one or several feed producers that will fed the system with external underlying asset prices. 
 
 ## Smartcoins
 
-Also know as witness or commitee fed assets.
+In bitshares the term smartcoin generally refers to MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. 
 
 ## Global Settle - Black Swan
 
