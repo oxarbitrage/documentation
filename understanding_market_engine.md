@@ -10,7 +10,7 @@ Users of the bitshares blockchain can also create Market Pegged Assets(MPAs) tha
 
 ## Smartcoins
 
-In bitshares the term smartcoin generally refers to MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. 
+In bitshares the term smartcoin generally refers to specific MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. However in some docimentation or software SmartCoin and MPA are the same.
 
 ## Global Settle - Black Swan
 
@@ -22,7 +22,9 @@ In bitshares the term smartcoin generally refers to MPAs that are owned by the c
 
 ## MCR
 
-## mssp
+maintenance_collateral_ratio
+
+## MSSP
 
 ## Premium
 
