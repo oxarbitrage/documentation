@@ -73,3 +73,4 @@ maximum_short_squeeze_ratio - Fed by the witness
 
 - http://docs.bitshares.org/bitshares/user/dex-margin-mechanics.html
 - https://steemit.com/bitshares/@haruka/detailed-mechanism-of-global-settlement-black-swan-and-reviving-of-bitassets
+- http://docs.bitshares.org/bitshares/user/dex-short.html
