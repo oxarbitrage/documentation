@@ -68,3 +68,8 @@ maximum_short_squeeze_ratio - Fed by the witness
 - get_trade_history_by_sequence
 
 ## Bitshares Market engine hardforks
+
+## References
+
+- http://docs.bitshares.org/bitshares/user/dex-margin-mechanics.html
+- https://steemit.com/bitshares/@haruka/detailed-mechanism-of-global-settlement-black-swan-and-reviving-of-bitassets
