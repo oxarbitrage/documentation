@@ -38,6 +38,8 @@ maximum_short_squeeze_ratio - Fed by the witness
 
 ## MSSP
 
+## Shorter
+
 ## Premium
 
 ## Discount
