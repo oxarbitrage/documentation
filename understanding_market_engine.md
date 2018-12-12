@@ -22,7 +22,7 @@ In bitshares the term smartcoin generally refers to specific MPAs that are owned
 
 ## Settelement price
 
-Also known as feed price. 
+Also known as medium feed price. 
 
 ## Collateral
 
@@ -44,13 +44,21 @@ maximum_short_squeeze_ratio - Fed by the witness
 
 ## Call Order
 
+Borrow
+
 ## Limit Order
+
+Sell
 
 ## Margin Call
 
+A margin call is the market forcing you to sell your collateral in order to buy enough USD to close your position.
 - Feed price is below order call price.
 
-## margin call territory
+## Margin Call Territory
+
+- When borrowing bitasset from the network and collateral is not enough to support current bitasset price(determinated by feeds), call order will be placed in margin call territory. This means a margin call will be produced when a match is available.
+
 
 ## Market API Calls
 
