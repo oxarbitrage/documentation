@@ -20,11 +20,19 @@ In bitshares the term smartcoin generally refers to specific MPAs that are owned
 
 ## Feeds
 
+In a market pegged asset the feed is how the witnesses valuate asset, at was price, using external sources. Witnesses collect market prices from different sources, apply some algorithm and feed the bitshares network. Effective feed in bitshares is the medium of all the witness provided feeds. 
+
+Feeds haves expiration.
+
+Bsip40
+
 ## Settelement price
 
 Also known as medium feed price. 
 
 ## Collateral
+
+In general it is the amount of BTS(can be other) that is backing up a position. Collateral in position depends on MCR. Borrow/Call orders should have at least bitasset*MCR in BTS to be created.
 
 ## Collateral Ratio
 
