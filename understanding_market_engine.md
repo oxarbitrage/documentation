@@ -48,6 +48,8 @@ maximum_short_squeeze_ratio - Fed by the witness
 
 ## Shorter
 
+Is the business of borrowing bitasset from the network with BTS as collateral and sell the asset in the market. Shorters are bitasset creators.
+
 ## Premium
 
 ## Discount
