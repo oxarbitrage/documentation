@@ -24,7 +24,11 @@ In a market pegged asset the feed is how the witnesses valuate asset, at was pri
 
 Feeds haves expiration.
 
-Bsip40
+## Feed manipulation
+
+To avoid black swan events the witnesses can agree on changing the algorithm they use to feed the network. Witnesses fed the network in general by getting a medium from external sources however the sources they use and the algo they implement to calculate the final value sent to bitshares is flexible among certain standards.
+
+For the witnesses to make drastic changes on their algos they need to be approved from the stakeholders. This is the case of controlvertial Bsip40 where experminetation on the algo was introduced and executed for a limited period of time where the bsip was active(voted/approved by stakeholders)
 
 ## Settelement price
 
@@ -95,3 +99,4 @@ A margin call is the market forcing you to sell your collateral in order to buy 
 - https://steemit.com/bitshares/@haruka/detailed-mechanism-of-global-settlement-black-swan-and-reviving-of-bitassets
 - http://docs.bitshares.org/bitshares/user/dex-short.html
 - http://www.bittwenty.com/bts_smartcoins.php
+- http://bytemaster.github.io/article/2015/01/27/BitAssets-and-Black-Swan-Events/
