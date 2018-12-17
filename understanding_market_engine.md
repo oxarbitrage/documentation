@@ -38,7 +38,13 @@ Also known as medium feed price.
 
 In general it is the amount of BTS(can be other) that is backing up a position. Collateral in position depends on MCR. Borrow/Call orders should have at least bitasset*MCR in BTS to be created.
 
+## Debt
+
 ## Collateral Ratio
+
+The collateral ratio is calculated as:
+
+(Collateral / Settlement Price) / Debt
 
 ## MCR
 
