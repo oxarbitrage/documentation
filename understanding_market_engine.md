@@ -101,7 +101,28 @@ A margin call is the market forcing you to sell your collateral in order to buy 
 - get_trade_history
 - get_trade_history_by_sequence
 
-## Bitshares Market engine hardforks
+## Bitshares Market engine BSIPs
+
+Market engine changes are protocol changes and by this they need bsip creation and approvment fropm stakeholders.
+
+### BSIP 30
+
+- [BSIP 30 - Always Allow Increasing Collateral Ratio If Debt Not Increased](https://github.com/bitshares/bsips/blob/master/bsip-0030.md)
+
+Implementation:
+
+https://github.com/bitshares/bitshares-core/pull/827
+
+### BSIP 31 - 34
+
+- [BSIP 31 - Update Short Position's Margin Call Price After Partially Called Or Settled](https://github.com/bitshares/bsips/blob/master/bsip-0031.md)
+- [BSIP 32 -  Always Match Orders At Maker Price](https://github.com/bitshares/bsips/blob/master/bsip-0032.md)
+- [BSIP 33 - Maker Orders With Better Prices Take Precedence](https://github.com/bitshares/bsips/blob/master/bsip-0033.md)
+- [BSIP 34 - Always Trigger Margin Call When Call Price Above Or At Price Feed](https://github.com/bitshares/bsips/blob/master/bsip-0034.md)
+
+Implementration:
+
+https://github.com/bitshares/bitshares-core/pull/829
 
 ## References
 
