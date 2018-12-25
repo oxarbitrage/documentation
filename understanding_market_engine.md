@@ -40,17 +40,19 @@ In general it is the amount of BTS(can be other) that is backing up a position. 
 
 ## Debt
 
-## Collateral Ratio
+## CR - Collateral Ratio
 
 The collateral ratio is calculated as:
 
 (Collateral / Settlement Price) / Debt
 
-## MCR
+## TCR - Target Collateral Ratio
+
+## MCR - Maintenance Collateral Ratio
 
 maintenance_collateral_ratio - Fed by the witneses
 
-## MSSR
+## MSSR - Maximum Short Squeeze Ratio
 
 maximum_short_squeeze_ratio - Fed by the witness
 
