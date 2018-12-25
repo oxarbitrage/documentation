@@ -56,7 +56,9 @@ maintenance_collateral_ratio - Fed by the witneses
 
 maximum_short_squeeze_ratio - Fed by the witness
 
-## MSSP
+## MSSP - Max Short Squeeze Price
+
+`bitasset.current_feed.max_short_squeeze_price();`
 
 ## Shorter
 
