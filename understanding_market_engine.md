@@ -16,8 +16,6 @@ Smartcoin and MPA is the same.
 
 In bitshares the term smartcoin generally refers to specific MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. They are also known by the "bit" prefix like bitUSD however the real name registered in the blockchain is just USD in that example.
 
-## Global Settle - Black Swan
-
 ## Feeds
 
 In a market pegged asset the feed is how the witnesses valuate asset, at was price, using external sources. Witnesses collect market prices from different sources, apply some algorithm and feed the bitshares network. Effective feed in bitshares is the medium of all the witness provided feeds. 
@@ -84,6 +82,8 @@ A margin call is the market forcing you to sell your collateral in order to buy 
 ## Margin Call Territory
 
 - When borrowing bitasset from the network and collateral is not enough to support current bitasset price(determinated by feeds), call order will be placed in margin call territory. This means a margin call will be produced when a match is available.
+
+## Global Settle - Black Swan
 
 
 ## Market API Calls
