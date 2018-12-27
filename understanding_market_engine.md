@@ -124,6 +124,38 @@ Implementration:
 
 https://github.com/bitshares/bitshares-core/pull/829
 
+## Bitshares Market engine Unit Tests
+
+### Market Tests
+
+- `issue_338_etc` - Reproduce bitshares-core issue #338 #343 #453 #606 #625 #649
+- `hardfork_core_338_test` - Fixed bitshares-core issue #338 #343 #606 #625 #649
+- `hardfork_core_453_test` - Fixed bitshares-core issue #453: multiple limit order filling issue
+- `hardfork_core_625_big_limit_order_test` - Tests (big) limit order matching logic after #625 got fixed
+- `hard_fork_453_cross_test` - Fixed bitshares-core issue #453 #606: multiple order matching without black swan, multiple bitassets
+- `hard_fork_338_cross_test` - Fixed bitshares-core issue #338 #453 #606: multiple order matching with black swan
+- `hard_fork_649_cross_test` - Fixed bitshares-core issue #649: Black swan detection fetch call order by call_price but not collateral ratio
+- `hard_fork_343_cross_test` - Fixed bitshares-core issue #343: change sorting of call orders when matching against limit order
+- `target_cr_test_limit_call` - BSIP38 "target_collateral_ratio" test: matching a taker limit order with multiple maker call orders
+- `target_cr_test_call_limit` - BSIP38 "target_collateral_ratio" test: matching a maker limit order with multiple taker call orders
+- `mcr_bug_increase_before1270` - 
+- `mcr_bug_increase_after1270` - 
+- `mcr_bug_decrease_before1270` - 
+- `mcr_bug_decrease_after1270` - 
+- `mcr_bug_cross1270` - 
+- `hardfork_core_338_test_after_hf1270` - 
+- `hardfork_core_453_test_after_hf1270` - 
+- `hardfork_core_625_big_limit_order_test_after_hf1270` - 
+- `target_cr_test_limit_call_after_hf1270` - 
+- `target_cr_test_call_limit_after_hf1270` - 
+
+### Swan Tests
+
+### BitAsset Tests
+
+### Market Rounding Tests
+
+
 ## References
 
 - http://docs.bitshares.org/bitshares/user/dex-margin-mechanics.html
