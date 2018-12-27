@@ -68,11 +68,15 @@ Is the business of borrowing bitasset from the network with BTS as collateral an
 
 ## Call Order
 
-Borrow
+In bitshares a call order is a blockchain operation(operation type: `3`, `call_order_update`). The action of creating or updating a call order is also called `borrow`. Any bitasset can be borrowed from the network if participant put enough collateral into the position, then the trader will usually want to sell the asset short for a profit and providing bitasset liquidity. The borrowing part is always done with a call order.
 
 ## Limit Order
 
-Sell
+The blockchain operation `limit_order_create`(operation type: `1`) is used to sell your asset for another in the market. Participant will execute the operation with a minimum amount to receive for the selling asset and the market engine will match with the buyer only if the `min_to_receive` field is satisfied.
+
+Partiipants can also cancel limit orders with blockchain operation `limit_order_cancel`(operation type: 2). When cancelled the order will lot be available in the order book anymore.
+
+Selling is also the next logical step for when borrowing. When borrowing bitasset the trader will offer it in the market, trader at this moment is short the bitasset.
 
 ## Margin Call
 
