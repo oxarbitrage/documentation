@@ -171,4 +171,5 @@ https://github.com/bitshares/bitshares-core/pull/829
 - http://docs.bitshares.org/bitshares/user/dex-short.html
 - http://www.bittwenty.com/bts_smartcoins.php
 - http://bytemaster.github.io/article/2015/01/27/BitAssets-and-Black-Swan-Events/
-- https://github.com/bitshares/bitshares-core/wiki/resolvable-bitassets
+- https://github.com/bitshares/bitshares-core/wiki/resolvable-bitassets - check if this feature is available
+- https://github.com/MichelSantos/share201811/blob/master/gs_likelihood.md
