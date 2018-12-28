@@ -38,6 +38,8 @@ In general it is the amount of BTS(can be other) that is backing up a position. 
 
 ## Debt
 
+When borrowing the debt is the amount of bitasset the network is lending you, for example you will want to borrow 10 bitusd and collateral at 100 BTS. Position debt and collateral are defined by the call order parameters.
+
 ## CR - Collateral Ratio
 
 The collateral ratio is calculated as:
@@ -45,6 +47,8 @@ The collateral ratio is calculated as:
 (Collateral / Settlement Price) / Debt
 
 ## TCR - Target Collateral Ratio
+
+Is defined by the borrower as a call order parameter.
 
 ## MCR - Maintenance Collateral Ratio
 
