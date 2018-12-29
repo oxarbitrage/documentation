@@ -68,7 +68,11 @@ Is the business of borrowing bitasset from the network with BTS as collateral an
 
 ## Premium
 
+If bitAsset value > Asset value the bitasset is in premium. A holder will need to pay more real USD to get 1 bitUSD. https://bitsharestalk.org/index.php?topic=27701.msg326859#msg326859
+
 ## Discount
+
+If bitAsset Value < Asset value then the bitasset is in discount. A Holder will pay less real USD to get 1 bitUSD.
 
 ## Call Order
 
