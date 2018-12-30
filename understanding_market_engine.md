@@ -46,6 +46,14 @@ The collateral ratio is calculated as:
 
 (Collateral / Settlement Price) / Debt
 
+## Call Price
+
+Is the price at what the position will be margin called. Call price is independent from feed and it is calculated as:
+
+Call price = Collateral / (Debt * MCR)
+
+Open positions can increase call price by adding more collateral to their open positions to avoid margin call.
+
 ## TCR - Target Collateral Ratio
 
 Is defined by the borrower as a call order parameter.
