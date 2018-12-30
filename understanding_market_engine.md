@@ -105,6 +105,7 @@ A margin call is the market forcing you to sell your collateral in order to buy 
 
 ## Global Settle - Black Swan
 
+BSIP 18: "A global settlement occurs when the least collateralized short position has insufficient collateral to buy back the borrowed SmartCoins at the current feed price."
 
 ## Market API Calls
 
