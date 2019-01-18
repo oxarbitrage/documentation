@@ -60,7 +60,7 @@ Is defined by the borrower as a call order parameter.
 
 ## MCR - Maintenance Collateral Ratio
 
-maintenance_collateral_ratio - Fed by the witneses
+Is the minimum collateral a position need to have to not being marging called. MCR is fed by the witness and effective MCR is a median from all the currently valid feeds.
 
 ## MSSR - Maximum Short Squeeze Ratio
 
