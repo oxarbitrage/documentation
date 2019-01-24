@@ -30,7 +30,7 @@ For the witnesses to make drastic changes on their algos they need to be approve
 
 ## Settelement price
 
-Also known as medium feed price. 
+Different feed producers will feed different prices into the blockchain according to their own algorithm to calculate fair value. In smartcoins the witnesses are in charge of feeding the pegged asset by querying external sources of price and appling custom algos into it. As there will be several active feeds for the same asset from the different witnesses a medium of this prices is calculated by the blockchain. This is the settlement price of the asset.
 
 ## Collateral
 
