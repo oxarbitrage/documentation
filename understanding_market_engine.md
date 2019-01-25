@@ -56,7 +56,9 @@ Open positions can increase call price by adding more collateral to their open p
 
 ## TCR - Target Collateral Ratio
 
-Is defined by the borrower as a call order parameter.
+Is defined by the borrower(shorter) as a call order parameter.
+
+https://github.com/bitshares/bsips/blob/master/bsip-0038.md#the-definition-of-target-collateral-ratio
 
 ## MCR - Maintenance Collateral Ratio
 
