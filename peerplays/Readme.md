@@ -84,3 +84,4 @@ This document is not complete and open to modifications. Developers and others a
 
 - https://www.peerplays.com/how-does-the-profit-sharing-function-work/
 - https://github.com/oxarbitrage/documentation/blob/master/peerplays/Graphene-Improvement-Proposal-DPOS2GPOS.pdf
+- https://github.com/peerplays-network/pips/blob/master/pip-0002.md
