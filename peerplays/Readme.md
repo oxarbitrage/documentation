@@ -74,7 +74,42 @@ No predefined period is required to vote as long as the vesting balance is there
 
 - We add the test cases. https://github.com/peerplays-network/peerplays/commit/49333a2c12cf7a7e559aa7775c11546453ba1d9c
 
-- We add a create gpos vesting balance function from the cli wallet and test it by introducing cli tests [TBD].
+- We add a create gpos vesting balance function from the cli wallet at https://github.com/peerplays-network/peerplays/pull/8/commits/610266481b29e01ff5ca8cf7c2286af3bfb9262d.
+
+- Changed the global parameters to extensions to avoid different chain id at: https://github.com/peerplays-network/peerplays/pull/8/commits/d602e7160108e9e4b2d59538f793e90c77527e9c
+
+- Refactor of `calculate_vesting_factor` is done at https://github.com/peerplays-network/peerplays/pull/8/commits/30c95f6010927339d91cb08e0e168f69549a0129, https://github.com/peerplays-network/peerplays/pull/8/commits/ec64df788981fed5fc17d7cc83b63fcd21465d8a and https://github.com/peerplays-network/peerplays/pull/8/commits/0e3d87eaad6e80eac1062447d8ced2b7d9a7a446
+
+### The calculate_vesting_factor function
+
+function `calculate_vesting_factor(account)` returns vesting factor of an account that will be used to calculating voting power or used to calculate dividends share at dividend payment time.
+
+#### explication of the function:
+
+   - get last time account in question voted form stats.
+   - get from the blockchain properties, current global GPOS variables.
+   - create and initialize additional variables needed for calculation.
+   - make sure we are inside a GPOS period, assert if we are not.
+   - get in what GPOS subperiod we are(current_subperiod).
+   - make sure the current subperiod where we are is valid.
+   - if account last vote is before gpos period start then vesting factor will be 0 and we exit.
+   - vesting factor is = numerator / number of subperiods.
+   - starting numerator is equal to the number of subperiods.
+   - for subperiod = 1 and if the user voted the coefficient will be always 1.
+   - if we are in a subperiod greater than 1 we need to adjust coeffcient as follows, lets assume 6 subperiods in this gpos setup:
+      - create a list that goes from subperiod 2(remember we exluded subperiod 1 from calculations) to current subperiod(lets assume we are in subperiod 4).
+      - reverse the list so recent past periods will be checked first.
+      - we loop throw the list, for example if we are in period 4 reversed list will be: {4,3,2}.
+      - by default numerator gets decreased with each iteration, following the example numerator at the first iteration will be 6 - 1 = 5.
+      - inmeditly we check if he voted in the last subperiod(subperiod 3)
+      - if account voted in subperiod 3 then numerator is increased(5 + 1) and we exit the loop. voting power here is full as account voted in the last period. this will also be happening if we are for example in period 5 and the account voted in period 4, if we are in period 3 and account voted in period 2, etc.
+      - if the user did not voted in the past period then the loop continues, numerator is decrased again from 5 to 4 and we check period 2 for a vote.
+      - if found, numerator is increased to 5 so coeffcient will be 5/6 for this account at this moment.
+      - if vote not found in period 2 then loop continues, numerator is decrased to 3 and we check votes for the account in period 1
+      - we are in the last iteration , if vote found in period 1 then numerator is increased back to 4 and coeffcient will be 4/6.
+      - if no vote is found in period 1 the loop is over and the final numerator will be 3 and coeffcient 3/6, however we will never reach this level because this means that last vote is before gpos period started so coeffcient will be 0 before entering the loop.
+
+Function Code: https://github.com/peerplays-network/peerplays/blob/0e3d87eaad6e80eac1062447d8ced2b7d9a7a446/libraries/chain/db_maint.cpp#L728-L785  
 
 ### Conclusion
 
