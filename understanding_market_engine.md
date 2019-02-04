@@ -6,7 +6,7 @@ Bitshares is a token/asset factory. Once an account is created the user can inme
 
 ## Market Pegged Assets
 
-Users of the bitshares blockchain can also create Market Pegged Assets(MPAs) that can follow the value of a conventional asset like the USD or the SP500 . In this kind of asset the creator will whitelist one or several feed producers that will fed the system with external underlying asset prices. 
+Users of the bitshares blockchain can also create Market Pegged Assets(MPAs) that can follow the value of a conventional underlying asset like the USD or the SP500 . In this kind of asset the creator will whitelist one or several feed producers that will fed the system with external underlying asset prices. 
 
 ## Smartcoin
 
@@ -14,13 +14,13 @@ Smartcoin and MPA is the same.
 
 ## BitAsset
 
-In bitshares the term smartcoin generally refers to specific MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. They are also known by the "bit" prefix like bitUSD however the real name registered in the blockchain is just USD in that example.
+In bitshares the term bitasset generally refers to specific MPAs that are owned by the committee and fed by the witnesses. Examples of this assets are USD, CNY, EUR and other system stable coins. They are also known by the "bit" prefix like bitUSD however the real name registered in the blockchain is just USD in that example.
 
 ## Feeds
 
-In a market pegged asset the feed is how the witnesses valuate asset, at was price, using external sources. Witnesses collect market prices from different sources, apply some algorithm and feed the bitshares network. Effective feed in bitshares is the medium of all the witness provided feeds. 
+In a market pegged asset the feed is how the witnesses valuate asset, at what price, using external sources. Witnesses collect market prices from different sources, apply some algorithm and feed the bitshares network. Effective settelement price of MPA in bitshares is the medium of all the witness provided feeds. 
 
-Feeds haves expiration.
+Feeds haves expiration, so witnesses or feed producers must submit new data constantly.
 
 ## Feed manipulation
 
@@ -30,11 +30,11 @@ For the witnesses to make drastic changes on their algos they need to be approve
 
 ## Settelement price
 
-Different feed producers will feed different prices into the blockchain according to their own algorithm to calculate fair value. In smartcoins the witnesses are in charge of feeding the pegged asset by querying external sources of price and appling custom algos into it. As there will be several active feeds for the same asset from the different witnesses a medium of this prices is calculated by the blockchain. This is the settlement price of the asset.
+Different feed producers will feed different prices into the blockchain according to their own sources and algorithm to calculate fair value. In bitassets the witnesses are in charge of feeding the pegged asset by querying external sources of price and appling custom algos into it. As there will be several active feeds for the same asset from the different witnesses a medium of this prices is calculated by the blockchain. This is the settlement price of the asset.
 
 ## Collateral
 
-In general it is the amount of BTS(can be other) that is backing up a position. Collateral in position depends on MCR. Borrow/Call orders should have at least bitasset*MCR in BTS to be created.
+It is the amount of BTS(can be other) that is backing up a borrow position. Bitassets can be borrowed from the blockchain by allocating collateral and sell for a profit in a process called shorting. Collateral in position depends on MCR. Borrow/Call orders should have at least bitasset*MCR in BTS to be created.
 
 ## Debt
 
