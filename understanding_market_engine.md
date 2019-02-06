@@ -1,8 +1,10 @@
 # Understanding the Bitshares Market Engine
 
+Bitshares(among other features) is a token/asset factory and trading framework. Once an account is created the user can inmediatly create and issue asset. Once an asset is created it can inmediatly trade with all the other assets in the bitshares blockchain unless specific whitelist/blacklist rules are configured.
+
 ## User Issued Assets
 
-Bitshares is a token/asset factory. Once an account is created the user can inmediatly create and issue asset. Once an asset is created it can inmediatly trade with all the other assets in the bitshares blockchain unless specific whitelist/blacklist rules are configured. User Issued Assets(UIAs) trading price ...
+User Issued Assets(UIAs) trading price ...
 
 ## Market Pegged Assets
 
