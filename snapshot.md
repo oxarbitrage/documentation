@@ -1,14 +1,14 @@
-# Snapshot comparassion in bitshares
+# Snapshot comparison in bitshares
 
-When a new release is about to get merged into the `testnet` or into `master` it is a good practice to do a snapshot comparassion between current and new code coming. 
+When a new release is about to get merged into the `testnet` or into `master` it is a good practice to do a snapshot comparison between current and new code coming.
 
-A snapshot is just a dump of the internal objects database and it is done by the `snapshot_plugin` at a user selected time or block number. 
+A snapshot is just a dump of the internal objects database and it is done by the `snapshot_plugin` at a user selected time or block number.
 
-The following is an example of a comparassion done between 2 branches that are about to get merged one into the other, in this case `testnet_release` is going to be merged into `testnet` with hardfork changes.
+The following is an example of a comparison done between 2 branches that are about to get merged one into the other, in this case `testnet_release` is going to be merged into `testnet` with hardfork changes.
 
 2 different builds need to be made, this process can be done in 2 different machines for speed purposes, following assumes just 1 machine and creates 1 snap after the other.
 
-Checkpoints are needed as we are in the testnet, after building we are going to be taking a snapshot at `2019-02-22T00:00:00` wich is current date.
+Checkpoints are needed as we are in the testnet, after building we are going to be taking a snapshot at `2019-02-22T00:00:00` which is current date.
 
 ## Snapshot 1 - testnet_release:
 
@@ -48,3 +48,4 @@ diff /root/testnet_snaps/testnet_release/bitshares-core/snap1.json /root/testnet
 
 ## Analize results
 
+If the objects changed, identify what parts of new code introduced are causing the changes and make sure that is ok to be happening. Check []
