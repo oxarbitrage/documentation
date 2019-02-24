@@ -48,4 +48,4 @@ diff /root/testnet_snaps/testnet_release/bitshares-core/snap1.json /root/testnet
 
 ## Analize results
 
-If the objects changed, identify what parts of new code introduced are causing the changes and make sure that is ok to be happening. Check []
+If the objects changed, identify what parts of new code introduced are causing the changes and make sure that is ok to be happening. Check https://github.com/bitshares/bitshares-core/pull/1609#issuecomment-466768898 as an example.
