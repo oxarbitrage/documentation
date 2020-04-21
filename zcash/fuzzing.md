@@ -42,7 +42,7 @@ Another one:
 Can be fixed by editing files in /sys/devices/system/cpu or just by skipping the test as:
 
 ```
-AFL_SKIP_CPUFREQ=1 ./zcutil/afl/afl-run.sh DecodeHexTx
+AFL_SKIP_CPUFREQ=1 ./zcutil/afl/afl-run.sh '/path/to/your/zcash/afl-temp' DecodeHexTx
 ```
 
 ### References
