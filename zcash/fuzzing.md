@@ -41,7 +41,7 @@ For additional options of the build please execute:
 There is a ascript that will combine the 3 steps above into 1:
 
 ```
-./zcutil/afl/afl-run.sh -f DecodeHexTx
+./zcutil/afl/afl-getbuildrun.sh -f DecodeHexTx
 ```
 
 This will install AFL in `./afl-temp`
