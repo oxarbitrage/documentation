@@ -23,7 +23,7 @@ Next build for AFL:
 ./zcutil/afl/afl-build.sh -i /tmp/afl -f DecodeHexTx
 ```
 
-Option `-f` can be one of the following: CheckBlock, DecodeHexTx, DeserializeAddrMan, DeserializeTx or ReadFeeEstimates
+Option `-f` can be one of the following: `CheckBlock`, `DecodeHexTx`, `DeserializeAddrMan`, `DeserializeTx` or `ReadFeeEstimates`
 
 For additional options of the build please execute:
 
