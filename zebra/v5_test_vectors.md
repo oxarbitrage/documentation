@@ -8644,13 +8644,13 @@ In order to use it to test it as a finalized state vector in Zebra we need to ma
 
 ##### test vector coinbase height must be "1":
 
-Current test vector haves height `1_046_401`, we want to have this as `1`. In order to do it we found out that `1_046_401` is serialized and in hex the string: 
+Current test vector haves height `1_046_401`, we want to have this as `1`. In order to do it we found out that `1_046_401` serialized and in hex string is `81F70F`.
 
-So we replaced this with `` which is the hex serialized representation of `1u32`.
+So we replaced this with `010000` which is the hex serialized representation of `1u32`.
 
 ##### test vector header.previous_block_hash must be the genesis block hash:
 
-Genesis block hash is ``, encoded this is ``. We replace the encoded representation of `` with ``.
+Genesis block hash is `00040fe8ec8471911baa1db1266ea15dd06b4a8a5c453883c000b031973dce08`, encoded this is `08CE3D9731B000C08338455C8A4A6BD05DA16E26B11DAA1B917184ECE80F0400`. We replace the encoded representation of `95a0613c32475cc56ea54b026602e1c4f257304704cb332f0768bfe6ab63e36f` which is `6FE363ABE6BF68072F33CB04473057F2C4E10266024BA56EC55C47323C61A095` in our test vector hex with the one corresponding to the genesis.
 
 The final hex representation of the test block is:
 
