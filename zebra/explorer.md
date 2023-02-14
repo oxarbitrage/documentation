@@ -32,14 +32,36 @@ https://zcashblockexplorer.com/
 | z_validateaddress           | MINING.                | Will be implemented as part of the mining work: https://github.com/ZcashFoundation/zebra/issues/6083                                                                                                                                                                                           | [Zcash](https://zcash.github.io/rpc/z_validateaddress.html)                                                                                                                  | [1](https://github.com/nighthawk-apps/zcash-explorer/blob/main/lib/zcash_explorer_web/controllers/search_controller.ex#L17)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 
-## Final goals
+## Features
 
 
 - Be able to run the explorer with a zebra backend replacement. Everything should work.
 - Write a document explaining how to do it.
 
+## Scope
 
-## Pros and cons
+### Installation
+
+1 week.
+
+### Tecnical details to be resolved by the Zebra team (rust feature, location of the code, etc).
+
+1 week.
+
+### RPC methods development and testing
+
+Estimating 1 week per call including tests, if we take away the ones that we have already fully implemented and the ones that will be implemented as part of mining and before this project start, we have 11 calls to implement or modify.
+
+11 weeks.
+
+### Write document
+
+1 week
+
+### Total : 14 weeks or 3-4 months of work
+
+
+## Advantages and Disadvantages
 
 | Pros                                                                                                                          | Cons                                                                                                                         |
 | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
