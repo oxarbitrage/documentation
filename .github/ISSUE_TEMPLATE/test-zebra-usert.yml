@@ -12,10 +12,11 @@ body:
     attributes:
       label: What happened?
       description: Also tell us, what did you expect to happen?
-      placeholder: Tell us what you see!
       value: "I expected to see this happen:
 
+
       Instead, this happened:
+
     "
     validations:
       required: true
@@ -23,33 +24,37 @@ body:
     id: reproduce
     attributes:
       label: Steps to reproduce
-      description: Copy and paste the exact commands or code here
-      placeholder: Tell us how we can reproduce it!
-      value: "Behavior or code sample that causes the bug"
+      description: Copy and paste the exact commands or code here.
+      placeholder: "Behavior or code sample that causes the bug"
     validations:
-      required: true
+      required: false
   - type: textarea
     id: logs
     attributes:
       label: Zebra logs
-      description: Copy and paste the last 100 Zebra log lines.
-      placeholder: Show us the logs!
-      value: "copy and paste the logs here"
-    validations:
-      required: true
-  - type: input
-    id: version
-    attributes:
-      label: Version
-      description: "For bugs in `zebrad`, run `zebrad version`.
-
-For bugs in the `zebra` libraries, list the `zebra` crate versions.
-You can get this information using cargo-tree:
-cargo install cargo-tree
-cargo tree | grep zebra"
-      placeholder: 
+      description: Copy and paste the last 100 Zebra log lines or upload the full logs to https://gist.github.com/ and add a link to them here.
+      placeholder: "copy and paste the logs here"
     validations:
       required: false
+  - type: input
+    id: zebrad-version
+    attributes:
+      label: Zebra Version
+      description: "For bugs in `zebrad`, run `zebrad version`."
+    validations:
+      required: false
+  - type: textarea
+    id: libraries
+    attributes:
+      label: Zebra libraries
+      description: For bugs in the `zebra` libraries, list the `zebra` crate versions.
+      placeholder: "```
+      cargo install cargo-tree
+      cargo tree | grep zebra
+      ```"
+    validations:
+      required: false
+
   - type: checkboxes
     id: os
     attributes:
