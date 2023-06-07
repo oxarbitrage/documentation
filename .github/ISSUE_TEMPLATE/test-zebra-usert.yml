@@ -36,6 +36,24 @@ body:
       placeholder: "copy and paste the logs here"
     validations:
       required: false
+  - type: checkboxes
+    id: crate
+    attributes:
+      label: In what crates the bug is located, if in any?
+      description: You may select more than one.
+      options:
+        - label: zebrad
+        - label: zebra-chain
+        - label: zebra-consensus
+        - label: zebra-network
+        - label: zebra-node-services
+        - label: zebra-rpc
+        - label: zebra-script
+        - label: zebra-state
+        - label: zebra-test
+        - label: zebra-utils
+        - label: tower-batch
+        - label: tower-fallback
   - type: input
     id: zebrad-version
     attributes:
@@ -48,13 +66,9 @@ body:
     attributes:
       label: Zebra libraries
       description: For bugs in the `zebra` libraries, list the `zebra` crate versions.
-      placeholder: "```
-      cargo install cargo-tree
-      cargo tree | grep zebra
-      ```"
+      placeholder: "You can get the crate version by checking the Cargo.toml inside the crate folder."
     validations:
       required: false
-
   - type: checkboxes
     id: os
     attributes:
