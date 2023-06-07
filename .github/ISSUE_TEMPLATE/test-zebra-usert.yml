@@ -13,10 +13,7 @@ body:
       label: What happened?
       description: Also tell us, what did you expect to happen?
       value: "I expected to see this happen:
-
-
       Instead, this happened:
-
     "
     validations:
       required: true
@@ -41,7 +38,7 @@ body:
     attributes:
       label: Zebra Version
       description: "For bugs in `zebrad`, run `zebrad --version`."
-      placeholder: "zebrad 1.0.0-rc.9"
+      placeholder: "zebrad 1.0.0-placeholder"
     validations:
       required: false
   - type: checkboxes
@@ -50,9 +47,9 @@ body:
       label: Which operating systems does the issue happen on?
       description: You may select more than one.
       options:
+        - label: Linux
         - label: macOS
         - label: Windows
-        - label: Linux
         - label: Other OS
   - type: input
     id: os-details
