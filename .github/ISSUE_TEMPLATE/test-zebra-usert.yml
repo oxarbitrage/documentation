@@ -33,7 +33,7 @@ body:
     attributes:
       label: Zebra logs
       description: Copy and paste the last 100 Zebra log lines or upload the full logs to https://gist.github.com/ and add a link to them here.
-      placeholder: "copy and paste the logs here"
+      placeholder: "Copy and paste the logs here"
     validations:
       required: false
   - type: input
@@ -41,6 +41,7 @@ body:
     attributes:
       label: Zebra Version
       description: "For bugs in `zebrad`, run `zebrad --version`."
+      placeholder: "zebrad 1.0.0-rc.9"
     validations:
       required: false
   - type: checkboxes
@@ -57,9 +58,7 @@ body:
     id: os-details
     attributes:
       label: OS details
-      description: "Linux, macOS, BSD: the output of `uname -a`
-Windows: Windows version and 32-bit or 64-bit
-Other OS: OS name and version"
+      description: "Linux, macOS, BSD: the output of `uname -a`, Windows: Windows version and 32-bit or 64-bit, Other OS: Name and version"
       placeholder:
     validations:
       required: false
