@@ -1,6 +1,6 @@
 name: User bug report
 description: Create a report to help us improve
-title: '[Bug]: '
+title: '[User reported bug]: '
 labels: C-bug, S-needs-triage
 body:
   - type: markdown
