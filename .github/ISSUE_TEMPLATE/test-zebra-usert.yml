@@ -58,7 +58,7 @@ body:
     id: os-details
     attributes:
       label: OS details
-      description: "Linux, macOS, BSD: the output of `uname -a`, Windows: Windows version and 32-bit or 64-bit, Other OS: Name and version"
+      description: "Linux, macOS, BSD: the output of `uname -a`; Windows: version and 32-bit or 64-bit; Other OS: name and version"
       placeholder:
     validations:
       required: false
