@@ -1,6 +1,6 @@
 # Building zcash on Apple Silicon (aarch64-apple-darwin)
 
-The zcash build system does not natively support Apple Silicon (arm64/aarch64) Macs. Two issues prevent a successful build on these machines. This document describes the prerequisites, both problems, and their fixes.
+The zcash build system does not natively support Apple Silicon (arm64/aarch64) Macs. Two issues prevent a successful build, and a third prevents the wallet from functioning at runtime. This document describes the prerequisites, all three problems, and their fixes.
 
 ## Prerequisites
 
@@ -141,9 +141,57 @@ With `HAVE_WEAK_GETAUXVAL=0` and `HAVE_STRONG_GETAUXVAL=0`, the crc32c code skip
 
 ---
 
-## Build instructions after applying fixes
+## Problem 3: BerkeleyDB mutex failure at runtime
 
-After making both changes, clean any previous build artifacts and rebuild:
+### Symptom
+
+zcashd builds successfully but crashes on startup when opening the wallet database:
+
+```
+CDBEnv::Open: Error -30972 opening database environment: BDB0087 DB_RUNRECOVERY: Fatal error, run database recovery
+```
+
+The BDB error log (`regtest/db.log`) shows:
+
+```
+BDB2015 Unable to acquire/release a mutex; check configuration
+BDB0061 PANIC: BDB0069 DB_LOCK_NOTGRANTED: Lock not granted
+```
+
+The process may also abort with:
+
+```
+Assertion failed: (!posix::pthread_mutex_destroy(&m)), function ~mutex
+```
+
+### Cause
+
+BerkeleyDB 6.2.23 has a mutex implementation selection bug on macOS ARM64. During its configure step, BDB's `dist/aclocal/mutex.m4` determines which mutex backend to use:
+
+1. **POSIX shared pthreads are skipped on all Darwin** (lines 184-193 of `mutex.m4`). A comment explains that macOS 10.7 broke `pthread_*_setpshared(PTHREAD_PROCESS_SHARED)` — it returns success instead of EINVAL, but the shared mutexes don't actually work. BDB avoids testing for them entirely on Darwin.
+
+2. **With shared pthreads skipped, BDB falls through to test-and-set mutexes.** On macOS it finds `Darwin/_spin_lock_try` (line 443), which uses the deprecated `OSSpinLock` internals. On Apple Silicon, these spin locks have known priority inversion bugs and may fail to acquire/release properly.
+
+3. **The result**: BDB selects a broken mutex backend, and any attempt to open a database environment fails immediately.
+
+### Fix
+
+In `depends/packages/bdb.mk`, add `--enable-posixmutexes` to the Darwin config options:
+
+```diff
+ $(package)_config_opts_aarch64=--disable-atomicsupport
++$(package)_config_opts_darwin+=--enable-posixmutexes
+```
+
+This forces BDB's configure to set `db_cv_mutex=posix_only`. Since shared pthreads are skipped on Darwin, the configure script falls through to test **private** (thread-only) POSIX pthreads (`POSIX/pthreads/private`), which sets both `HAVE_MUTEX_PTHREADS` and `HAVE_MUTEX_THREAD_ONLY`.
+
+Thread-private POSIX mutexes work correctly on macOS — only the process-shared variant is broken. Since zcashd uses BDB within a single process, thread-private mutexes are sufficient.
+
+---
+
+## Build instructions after applying all fixes
+
+After making all three changes, clean any previous build artifacts and rebuild:
 
 ```bash
 make distclean
@@ -152,7 +200,7 @@ rm -rf target/
 ./zcutil/build.sh -j$(nproc)
 ```
 
-The full depends rebuild is necessary because the old depends prefix contains the x86_64 Rust toolchain and a `config.site` with the wrong `RUST_TARGET`.
+The full depends rebuild is necessary because the old depends prefix contains the x86_64 Rust toolchain, a `config.site` with the wrong `RUST_TARGET`, and BDB built with the wrong mutex backend.
 
 ### Verifying the build
 
@@ -161,6 +209,22 @@ file src/zcashd
 # Expected: Mach-O 64-bit executable arm64
 
 src/zcashd --version
+```
+
+### Verifying the wallet works
+
+Create a regtest data directory and config, then confirm zcashd starts without BDB errors:
+
+```bash
+mkdir -p /tmp/zcash-regtest
+echo "i-am-aware-zcashd-will-be-replaced-by-zebrad-and-zallet-in-2025=1" > /tmp/zcash-regtest/zcash.conf
+src/zcashd -regtest -datadir=/tmp/zcash-regtest -printtoconsole=1
+```
+
+You should see `CDBEnv::Open: LogDir=...` followed by successful initialization (no `DB_RUNRECOVERY` error). In another terminal, verify the node responds:
+
+```bash
+src/zcash-cli -regtest -datadir=/tmp/zcash-regtest getblockchaininfo
 ```
 
 ### Warnings you can safely ignore
