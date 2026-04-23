@@ -1,6 +1,6 @@
 # Building zcash on Apple Silicon (aarch64-apple-darwin)
 
-The zcash build system does not natively support Apple Silicon (arm64/aarch64) Macs. Two issues prevent a successful build, and a third prevents the wallet from functioning at runtime. This document describes the prerequisites, all three problems, and their fixes.
+The zcash build system does not natively support Apple Silicon (arm64/aarch64) Macs. Several issues prevent a successful build and runtime operation. This document describes the prerequisites, all four known problems, and their fixes.
 
 ## Prerequisites
 
@@ -189,9 +189,59 @@ Thread-private POSIX mutexes work correctly on macOS — only the process-shared
 
 ---
 
+## Problem 4: Compilation errors with newer Xcode / macOS SDK
+
+### Symptom
+
+On systems with a recent Xcode (Clang 20+) and a newer macOS SDK (e.g. `MacOSX26.4.sdk`), the build fails with errors like:
+
+```
+./support/allocators/secure.h:25:28: error: 'pointer' is deprecated [-Werror,-Wdeprecated-declarations]
+   25 |     typedef typename base::pointer pointer;
+```
+
+```
+./util/time.h:32:28: error: 'instance' may be duplicated when built into a shared library: it is mutable,
+    with external linkage and hidden visibility [-Werror,-Wunique-object-duplication]
+   32 |         static SystemClock instance;
+```
+
+These appear across many translation units, producing dozens of errors.
+
+### Cause
+
+The zcash build uses `-Weverything -Werror` and selectively disables specific warnings. Two warnings that didn't exist (or didn't fire) with the older SDK/Clang shipped in the depends system are now triggered by newer system SDK headers:
+
+1. **`-Wdeprecated-declarations`**: In C++17, `std::allocator::pointer`, `const_pointer`, `reference`, and `const_reference` typedefs were deprecated. The newer libc++ in the macOS SDK marks them with `[[deprecated]]`. The zcash custom allocators (`secure_allocator` in `support/allocators/secure.h` and `zero_after_free_allocator` in `support/allocators/zeroafterfree.h`) inherit these typedefs from `std::allocator`, triggering the warning.
+
+2. **`-Wunique-object-duplication`**: A new warning introduced in Clang 20 that flags mutable static variables with external linkage and hidden visibility (`-fvisibility=hidden`), because they could be duplicated across shared library boundaries. This fires on the `CALLSITE` variables in the tracing/logging macros (`rust/include/tracing.h`, `rust/include/rust/metrics.h`) and singleton clock instances in `util/time.h`. This is a false positive for zcashd since it is a statically linked executable, not a shared library.
+
+### Fix
+
+In `configure.ac`, add both warnings to the `DISABLED_WARNING_CXXFLAGS` block (around line 358):
+
+```diff
+ DISABLED_WARNING_CXXFLAGS="\
+   -Wno-c++20-compat -Wno-cast-align -Wno-cast-qual -Wno-comma -Wno-conditional-uninitialized \
+   -Wno-covered-switch-default -Wno-ctad-maybe-unsupported \
+   -Wno-delete-non-abstract-non-virtual-dtor -Wno-deprecated-copy -Wno-deprecated-copy-dtor \
++  -Wno-deprecated-declarations \
+   -Wno-deprecated-dynamic-exception-spec -Wno-disabled-macro-expansion -Wno-documentation \
+   ...
+   -Wno-unsafe-buffer-usage \
++  -Wno-unique-object-duplication \
+   -Wno-unused-but-set-variable -Wno-unused-exception-parameter -Wno-unused-function \
+```
+
+These are safe to suppress. The deprecated allocator typedefs are a known C++17 cleanup that does not affect functionality. The object duplication warning is irrelevant because zcashd is a static binary — the flagged variables cannot actually be duplicated.
+
+> Note: This problem only affects systems with a newer Xcode/SDK than the one used by the depends build system's bundled Clang. If you are building on an older macOS version, you may not encounter this issue.
+
+---
+
 ## Build instructions after applying all fixes
 
-After making all three changes, clean any previous build artifacts and rebuild:
+After making all changes (Problems 1-3 are required; Problem 4 only if you have a newer Xcode/SDK), clean any previous build artifacts and rebuild:
 
 ```bash
 make distclean
